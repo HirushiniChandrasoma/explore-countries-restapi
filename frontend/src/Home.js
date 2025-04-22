@@ -14,6 +14,25 @@ export default function Home() {
 
   const handleSectionSelect = (section) => {
     setSelectedSection(section);
+    setDropdownOpen(false);
+  
+    // Navigate based on section
+    switch (section) {
+      case 'Countries':
+        navigate('/search-country');
+        break;
+      case 'Regions':
+        navigate('/search-regions');
+        break;
+      case 'Languages':
+        navigate('/languages');
+        break;
+      case 'Continents':
+        navigate('/search-regions');
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSearchClick = () => {
@@ -53,7 +72,6 @@ export default function Home() {
             )}
           </div>
 
-          <a href="#activities" className="activities-link">Activities</a>
           <button className="search-btn" onClick={handleSearchClick}>Search</button>
         </nav>
       </header>
