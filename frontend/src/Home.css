@@ -117,42 +117,98 @@
   }
   
   .hero-section {
-    background: linear-gradient(to bottom, #033c73, #0b69aa);
-    color: white;
-    padding: 80px 40px;
     display: flex;
-    justify-content: space-between;
+    height: 85vh;
+    background: linear-gradient(to right, #001f3f, #004466);
+    color: white;
+  }
+  
+  .hero-left {
+    flex: 1;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    padding-left: 60px;
+    animation: fadeIn 1s ease forwards;
+  opacity: 0;
+  animation-delay: 0.8s;
   }
   
+  .hero-text {
+    max-width: 500px;
+    opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  }
+  .hero-text p:nth-of-type(1) {
+    animation-delay: 0.8s;
+  }
+  
+  .hero-text p:nth-of-type(2) {
+    animation-delay: 1.2s;
+  }
   .hero-text h1 {
-    font-size: 48px;
-    margin: 10px 0;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: slideIn 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
   }
   
-  .world-map {
-    width: 50%;
-    height: 200px;
-    /* Add a map image or style as needed */
-    background: url('/src/images/map.jpg') no-repeat center;
-    background-size: contain;
+  @keyframes slideIn {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
+  
+  .white-text {
+    color: #ffffff;
+  }
+  
+  .highlight-text {
+    color: #00d1b2; /* Teal or your preferred accent color */
+  }
+  
+  .hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+  }
+  
+  .hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 60px;
+  }
+  
+
   
   .home-footer {
-    background: #f0f0f0;
-    padding: 20px;
     text-align: center;
+    padding: 20px;
+    color: white;
   }
   
-  .footer-links a {
-    color: #0066cc;
-    text-decoration: none;
-    margin: 0 8px;
-  }
   
   .footer-note {
     margin-top: 10px;
     font-size: 14px;
-    color: #555;
+    color: #0a0202;
+  }
+  .hero-video {
+    width: 100%;
+    object-fit: cover;
+    max-height: 95%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
   

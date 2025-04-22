@@ -1,89 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Home.css';
+import WorldVideo from "../src/images/worldMap.mp4";
 
 export default function Home() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedSection, setSelectedSection] = useState('Countries'); // Default selected
-
-  const navigate = useNavigate();
-
-  const handleDropdownToggle = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleSectionSelect = (section) => {
-    setSelectedSection(section);
-    setDropdownOpen(false);
-  
-    // Navigate based on section
-    switch (section) {
-      case 'Countries':
-        navigate('/search-country');
-        break;
-      case 'Regions':
-        navigate('/search-regions');
-        break;
-      case 'Languages':
-        navigate('/languages');
-        break;
-      case 'Continents':
-        navigate('/search-regions');
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleSearchClick = () => {
-    navigate('/search-country');
-  };
-
-  const sections = ['Regions', 'Languages', 'Continents', 'Countries'];
 
   return (
     <div className="home-container">
-      <header className="home-header">
-        <div className="logo">
-          <span className="icon">🌍</span>
-          <span className="logo-text">CountryReports</span>
-        </div>
-
-        <nav className="home-nav">
-          <div className="dropdown">
-            <button className="dropbtn" onClick={handleDropdownToggle}>
-              Countries ▾
-            </button>
-
-            {dropdownOpen && (
-              <div className="dropdown-content">
-                {sections.map((section) => (
-                  <div
-                    key={section}
-                    className={`dropdown-section-item ${
-                      selectedSection === section ? 'selected' : ''
-                    }`}
-                    onClick={() => handleSectionSelect(section)}
-                  >
-                    {section}
-                  </div>
-                ))}
-              </div>
-            )}
+       <section className="hero-section">
+        <div className="hero-left">
+          <div className="hero-text">
+            <h1>
+              <span className="white-text">Explore the </span>
+              <span className="highlight-text">World</span>
+            </h1>
+            <p>Discover countries, cultures, languages, and continents in one place.</p>
+            <p>Navigate through regions and learn what makes each nation unique.</p>
           </div>
-
-          <button className="search-btn" onClick={handleSearchClick}>Search</button>
-        </nav>
-      </header>
-
-      <section className="hero-section">
-        <div className="hero-text">
-          <h1>Culture</h1>
-          <h1>Countries</h1>
-          <h1>Travel</h1>
         </div>
-        <div className="world-map">
-          {/* Optional: World map image here */}
+        <div className="hero-right">
+          
+        <video className="hero-video" autoPlay loop muted playsInline>
+            <source src={WorldVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 
