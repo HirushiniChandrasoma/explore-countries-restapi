@@ -11,7 +11,7 @@ const SearchCountries = () => {
   const [error, setError] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(16);
-  const [selectedCountry, setSelectedCountry] = useState(null); // For modal
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
@@ -73,16 +73,21 @@ const SearchCountries = () => {
       <header className="search-header">
         <div className="logo">
           <span className="icon">🌍</span>
-          <span className="logo-text">CountryReports</span>
+          <span className="logo-text">Geonova</span>
         </div>
-        <input
-          className="search-bar"
-          type="text"
-          placeholder="Search country e.g. Indonesia"
-          value={searchInput}
-          onChange={handleSearchChange}
-        />
-        <button className="search-btn" onClick={handleSearchClick}>Search</button>
+
+        <div className="search-input-group">
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search country e.g. Indonesia"
+            value={searchInput}
+            onChange={handleSearchChange}
+          />
+          <button className="search-btn" onClick={handleSearchClick}>
+            Search
+          </button>
+        </div>
       </header>
 
       <div className="alphabet-filter">
@@ -118,9 +123,15 @@ const SearchCountries = () => {
       </div>
 
       <div className="pagination">
-        <button onClick={handlePrevious} disabled={currentPage === 1}>Previous</button>
-        <span>Page {currentPage} of {totalPages}</span>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button onClick={handleNext} disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
 
       <footer className="search-footer">
@@ -134,7 +145,6 @@ const SearchCountries = () => {
         <div className="footer-note">One World - Nations Online</div>
       </footer>
 
-      {/* Modal Popup */}
       {selectedCountry && (
         <div className="modal-overlay">
           <div className="modal-content">

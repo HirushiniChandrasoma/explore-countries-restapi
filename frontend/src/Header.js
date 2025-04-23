@@ -47,7 +47,7 @@ function Header() {
           {/* Left side - menu + logo */}
           <div className="header-left">
             <Link to="/" className="logo-container">
-              <div className="logo">CountryReports</div>
+              <div className="logo">🌍Geonova</div>
             </Link>
           </div>
 

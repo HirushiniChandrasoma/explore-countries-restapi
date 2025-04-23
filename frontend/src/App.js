@@ -7,6 +7,8 @@ import SearchResult from './SearchResult';
 import Regions from './Regions';
 import Languages from './Languages';
 import Continents from './Continents';
+import Login from './Login';
+import SignUp from './Signup';
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
       <Header /> 
       <Routes>
       <Route path="/" element={<Home/>} /> 
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<SignUp />} />
       <Route path="/search-country" element={<SearchCountry/>} /> 
       <Route path="/search-result" element={<SearchResult/>} /> 
       <Route path="/search-regions" element={<Regions/>} />
