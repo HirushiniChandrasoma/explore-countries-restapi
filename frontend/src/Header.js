@@ -61,7 +61,7 @@ function Header() {
             </Link>
             <div className="dropdown">
             <button className="dropbtn" onClick={handleDropdownToggle}>
-              Countries ▾
+            {selectedSection}▾
             </button>
 
             {dropdownOpen && (

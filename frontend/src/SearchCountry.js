@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './SearchCountry.css';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -69,52 +68,65 @@ const SearchCountries = () => {
   const totalPages = Math.ceil(filteredCountries.length / countriesPerPage);
 
   return (
-    <div className="search-country-container">
-      <header className="search-header">
-        <div className="logo">
-          <span className="icon">🌍</span>
-          <span className="logo-text">Geonova</span>
+    <div className="font-sans p-5 bg-white text-center">
+      <header className="flex flex-col items-center mb-8">
+        <div className="text-2xl font-bold mb-3 text-gray-800">
+          <span>🌍</span>
+          <span className="ml-2">Geonova</span>
         </div>
 
-        <div className="search-input-group">
+        <div className="flex items-center gap-2">
           <input
-            className="search-bar"
+            className="p-3 w-2/3 max-w-lg border border-gray-300 rounded-md text-lg"
             type="text"
             placeholder="Search country e.g. Indonesia"
             value={searchInput}
             onChange={handleSearchChange}
           />
-          <button className="search-btn" onClick={handleSearchClick}>
+          <button
+            className="p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+            onClick={handleSearchClick}
+          >
             Search
           </button>
         </div>
       </header>
 
-      <div className="alphabet-filter">
+      <div className="my-5 text-lg">
         <span>Find by Country Name: </span>
         {alphabet.map((char) => (
-          <a key={char} href="#" onClick={() => handleLetterClick(char)} className="alpha-link">
+          <a
+            key={char}
+            href="#"
+            onClick={() => handleLetterClick(char)}
+            className="mx-2 text-blue-600 hover:underline"
+          >
             {char}
           </a>
         ))}
       </div>
 
-      {error && <div className="error-message">{error}</div>}
+      {error && <div className="text-red-600 mt-5">{error}</div>}
 
-      <div className="country-grid">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-5">
         {currentCountries.length === 0 ? (
-          <p>No countries found. Try a different search or filter.</p>
+          <p className="col-span-full">No countries found. Try a different search or filter.</p>
         ) : (
           currentCountries.map((country) => (
             <div
-              className="country-card"
               key={country.cca3}
-              onMouseEnter={(e) => e.currentTarget.classList.add('hovered')}
-              onMouseLeave={(e) => e.currentTarget.classList.remove('hovered')}
+              className="relative p-4 bg-gray-100 rounded-lg shadow-md transition-transform hover:scale-105 hover:shadow-xl"
             >
-              <img src={country.flags.png} alt={country.name.common} />
-              <div className="country-name">{country.name.common}</div>
-              <button className="more-info-btn" onClick={() => setSelectedCountry(country)}>
+              <img
+                src={country.flags.png}
+                alt={country.name.common}
+                className="w-full rounded-md mb-4"
+              />
+              <div className="font-semibold">{country.name.common}</div>
+              <button
+                className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-md opacity-0 transition-opacity group-hover:opacity-100"
+                onClick={() => setSelectedCountry(country)}
+              >
                 More Info
               </button>
             </div>
@@ -122,38 +134,51 @@ const SearchCountries = () => {
         )}
       </div>
 
-      <div className="pagination">
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
+      <div className="mt-6 flex justify-between items-center">
+        <button
+          className="p-3 bg-blue-600 text-white rounded-md disabled:bg-gray-400"
+          onClick={handlePrevious}
+          disabled={currentPage === 1}
+        >
           Previous
         </button>
         <span>
           Page {currentPage} of {totalPages}
         </span>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
+        <button
+          className="p-3 bg-blue-600 text-white rounded-md disabled:bg-gray-400"
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+        >
           Next
         </button>
       </div>
 
-      <footer className="search-footer">
-        <div className="footer-links">
-          <a href="#africa">Africa</a> | 
-          <a href="#asia">Asia</a> | 
-          <a href="#oceania">Australia-Oceania</a> | 
-          <a href="#americas">The Americas</a> | 
-          <a href="#europe">Europe</a>
+      <footer className="mt-10 pt-5 border-t border-gray-200">
+        <div className="text-gray-700">
+          <a href="#africa" className="text-blue-600 hover:underline">Africa</a> |
+          <a href="#asia" className="text-blue-600 hover:underline">Asia</a> |
+          <a href="#oceania" className="text-blue-600 hover:underline">Australia-Oceania</a> |
+          <a href="#americas" className="text-blue-600 hover:underline">The Americas</a> |
+          <a href="#europe" className="text-blue-600 hover:underline">Europe</a>
         </div>
-        <div className="footer-note">One World - Nations Online</div>
+        <div className="mt-3 text-sm text-gray-500">One World - Nations Online</div>
       </footer>
 
       {selectedCountry && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <button className="close-btn" onClick={() => setSelectedCountry(null)}>✖</button>
-            <h2>{selectedCountry.name.common} - Details</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg relative">
+            <button
+              className="absolute top-2 right-2 text-2xl text-gray-500"
+              onClick={() => setSelectedCountry(null)}
+            >
+              ✖
+            </button>
+            <h2 className="text-xl font-semibold mb-4">{selectedCountry.name.common} - Details</h2>
             <img
               src={selectedCountry.flags.png}
               alt={`${selectedCountry.name.common} flag`}
-              className="detail-flag"
+              className="w-32 mb-4 mx-auto"
             />
             <p><strong>Capital:</strong> {selectedCountry.capital?.[0] || 'N/A'}</p>
             <p><strong>Region:</strong> {selectedCountry.region}</p>

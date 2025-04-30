@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Language.css';
 
 export default function Languages() {
   const [countriesData, setCountriesData] = useState([]);
@@ -54,43 +53,59 @@ export default function Languages() {
   };
 
   const uniqueRegions = [...new Set(countriesData.map((c) => c.region).filter(Boolean))];
-  const uniqueCountries = [...new Set(countriesData.map((c) => c.name.common))];
 
   return (
-    <div className="languages-container">
-      <h2>Languages of the World</h2>
+    <div className="p-5 max-w-screen-lg mx-auto">
+      <h2 className="text-3xl font-semibold mb-5">Languages of the World</h2>
 
-      <div className="search-filters">
+      <div className="flex flex-wrap gap-3 mb-5">
         <input
           type="text"
           placeholder="Search language..."
           value={searchInput}
           onChange={handleSearchChange}
-          className="search-bar"
+          className="p-2 w-48 border rounded-md"
         />
 
-        <select onChange={(e) => setRegionFilter(e.target.value)} value={regionFilter}>
+        <select
+          onChange={(e) => setRegionFilter(e.target.value)}
+          value={regionFilter}
+          className="p-2 border rounded-md"
+        >
           <option value="">Filter by Region</option>
           {uniqueRegions.map((region) => (
-            <option key={region} value={region}>{region}</option>
+            <option key={region} value={region}>
+              {region}
+            </option>
           ))}
         </select>
       </div>
 
-      <div className="languages-list">
+      <div className="space-y-6">
         {filteredLanguages.map((lang) => (
-          <div key={lang} className="language-block">
-            <h3 onClick={() => setSelectedLanguage(lang)} className="language-name">
+          <div key={lang} className="bg-white p-4 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-xl">
+            <h3
+              onClick={() => setSelectedLanguage(lang)}
+              className="text-blue-500 cursor-pointer hover:underline"
+            >
               {lang}
             </h3>
 
             {selectedLanguage === lang && (
-              <div className="language-countries">
-                <h4>Spoken in:</h4>
-                <ul className="flag-row">
+              <div className="mt-4">
+                <h4 className="font-semibold">Spoken in:</h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
                   {filteredCountries(lang).map((country) => (
-                    <li key={country.cca3}className="flag-item">
-                      <img src={country.flags.png} alt={country.name.common} width="20" />{' '}
+                    <li
+                      key={country.cca3}
+                      className="bg-gray-200 p-4 rounded-lg text-center cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-md"
+                    >
+                      <img
+                        src={country.flags.png}
+                        alt={country.name.common}
+                        width="20"
+                        className="mx-auto mb-2"
+                      />
                       {country.name.common}
                     </li>
                   ))}
