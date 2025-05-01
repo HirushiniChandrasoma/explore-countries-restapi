@@ -115,20 +115,23 @@ const SearchCountries = () => {
           currentCountries.map((country) => (
             <div
               key={country.cca3}
-              className="relative p-4 bg-gray-100 rounded-lg shadow-md transition-transform hover:scale-105 hover:shadow-xl"
+              className="relative p-4 bg-gray-100 rounded-lg shadow-md transition-transform hover:scale-105 hover:shadow-xl group"
             >
-              <img
-                src={country.flags.png}
-                alt={country.name.common}
-                className="w-full rounded-md mb-4"
-              />
-              <div className="font-semibold">{country.name.common}</div>
-              <button
-                className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-md opacity-0 transition-opacity group-hover:opacity-100"
-                onClick={() => setSelectedCountry(country)}
-              >
-                More Info
-              </button>
+              <div className="relative group-hover:opacity-80 transition-opacity">
+                <img
+                  src={country.flags.png}
+                  alt={country.name.common}
+                  className="w-full rounded-md mb-4"
+                />
+                {/* More Info Button */}
+                <button
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={() => setSelectedCountry(country)}
+                >
+                  More Info
+                </button>
+              </div>
+              <div className="font-semibold mt-2">{country.name.common}</div>
             </div>
           ))
         )}
@@ -167,27 +170,29 @@ const SearchCountries = () => {
 
       {selectedCountry && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg relative">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-11/12 max-w-3xl relative">
             <button
-              className="absolute top-2 right-2 text-2xl text-gray-500"
+              className="absolute top-4 right-4 text-3xl text-gray-500"
               onClick={() => setSelectedCountry(null)}
             >
               ✖
             </button>
-            <h2 className="text-xl font-semibold mb-4">{selectedCountry.name.common} - Details</h2>
+            <h2 className="text-3xl font-semibold mb-4 text-gray-800">{selectedCountry.name.common} - Details</h2>
             <img
               src={selectedCountry.flags.png}
               alt={`${selectedCountry.name.common} flag`}
-              className="w-32 mb-4 mx-auto"
+              className="w-40 mb-4 mx-auto"
             />
-            <p><strong>Capital:</strong> {selectedCountry.capital?.[0] || 'N/A'}</p>
-            <p><strong>Region:</strong> {selectedCountry.region}</p>
-            <p><strong>Population:</strong> {selectedCountry.population.toLocaleString()}</p>
-            <p><strong>Languages:</strong> {
-              selectedCountry.languages
-                ? Object.values(selectedCountry.languages).join(', ')
-                : 'N/A'
-            }</p>
+            <div className="space-y-3">
+              <p className="text-xl"><strong>Capital:</strong> {selectedCountry.capital?.[0] || 'N/A'}</p>
+              <p className="text-xl"><strong>Region:</strong> {selectedCountry.region}</p>
+              <p className="text-xl"><strong>Population:</strong> {selectedCountry.population.toLocaleString()}</p>
+              <p className="text-xl"><strong>Languages:</strong> {
+                selectedCountry.languages
+                  ? Object.values(selectedCountry.languages).join(', ')
+                  : 'N/A'
+              }</p>
+            </div>
           </div>
         </div>
       )}
