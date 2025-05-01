@@ -19,8 +19,11 @@ module.exports = {
           '100%': { transform: 'translateX(0)', opacity: 1 },
         },
       },
+      colors: {
+        primary: '#001f3f',
+        secondary: '#004466',
+      },
     },
   },
   plugins: [],
 }
-
