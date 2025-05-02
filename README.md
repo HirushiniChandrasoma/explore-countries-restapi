@@ -61,6 +61,7 @@ Using the [REST Countries API](https://restcountries.com/),
 
 ```bash
 git clone https://github.com/HirushiniChandrasoma/explore-countries-restapi.git
+cd explore-countries-restapi
 cd frontend
 ```
 
@@ -129,7 +130,7 @@ Backend : Deploy separately using **Render**.
 ## 📁 Project Structure
 
 ```
-geoneo/
+explore-countries-restapi/
 │
 ├── public/
 ├── src/
@@ -153,6 +154,30 @@ geoneo/
 └── README.md
 ```
 
+
 ---
 
 
+## 📸 Screenshots
+### 🏠 Homepage
+![Homepage](../explore-countries-restapi/Screenshots/landing.png)
+
+### 🔍 Search Function
+![Search](../explore-countries-restapi/Screenshots/search.png)
+
+### 🔐 Login Page
+![Login](../explore-countries-restapi/Screenshots/login.png)
+
+### 📝 Sign Up Page
+![SignUp](../explore-countries-restapi/Screenshots/signup.png)
+
+### 🌍 Filter by Region
+![Continent](../explore-countries-restapi/Screenshots/continents.png)
+![Continents](../explore-countries-restapi/Screenshots/continents1.png)
+
+### 🗣️ Filter by Language
+![Language](../explore-countries-restapi/Screenshots/languages.png)
+![Languages](../explore-countries-restapi/Screenshots/languages1.png)
+
+### 📖 Country Details
+![Details](../explore-countries-restapi/Screenshots/details.png)
