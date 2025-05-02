@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+# 🌍 GeoNeo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GeoNeo is a modern React application that allows users to explore countries around the world using the REST Countries API. Users can search for countries, filter them by region or language, and view detailed information such as capital, population, and flag. Optional user authentication (login/signup) is implemented for enhanced features.
 
-## Available Scripts
+## 🔗 Live Demo
 
-In the project directory, you can run:
+🌐 [Live on Netlify](https://your-netlify-site.netlify.app) 
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📌 Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* 🔍 Search countries by name
+* 🌐 Filter countries by region and language
+* 📖 View detailed country info (capital, population, languages, etc.)
+* 🎬 Intro animation on first load
+* 👤 User authentication (Login/Signup)
+* 💻 Responsive UI with a modern CSS framework (Tailwind)
+* ⚡ Dynamic data rendering without page refresh
+* ✅ Tested with Jest
+* 🚀 Deployed on Netlify
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tech Stack
 
-### `npm run build`
+| Frontend      | Backend        | Styling     | Hosting      | Version Control |
+| ------------- | -------------- | ----------- | ------------ | --------------- |
+| React (Hooks) | Node.js/Express| TailwindCSS | Netlify      | Git + GitHub    |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📦 API Integration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Using the [REST Countries API](https://restcountries.com/), 
 
-### `npm run eject`
+* `GET /all` – List of all countries
+* `GET /name/{name}` – Search by country name
+* `GET /region/{region}` – Filter countries by region
+* `GET /alpha/{code}` – Get full country details by code
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🧭 Navigation & Routes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Route             | Component       | Description                        |
+| ----------------- | --------------- | ---------------------------------- |
+| `/`               | `Home`          | Main landing page                  |
+| `/login`          | `Login`         | User login page                    |
+| `/register`       | `Signup`        | New user registration              |
+| `/search-country` | `SearchCountry` | Search bar for countries           |
+| `/search-result`  | `SearchResult`  | Displays countries based on search |
+| `/search-regions` | `Regions`       | Region filter                      |
+| `/languages`      | `Languages`     | Filter countries by language       |
+| `/continents`     | `Continents`    | Optional continent grouping        |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ⚙️ Installation
 
-## Learn More
+1. **Clone the repo**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone https://github.com/HirushiniChandrasoma/explore-countries-restapi.git
+cd frontend
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Install dependencies**
 
-### Code Splitting
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Run the development server**
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. **Run backend**
 
-### Making a Progressive Web App
+```bash
+cd backend
+npm install
+node server.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🔐 User Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+User login/signup features are implemented with:
 
-### Deployment
+* JWT (JSON Web Tokens)
+* Token storage in `localStorage`
+* Route guards for protected components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## ✅ Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project includes unit and integration testing using:
+
+* **Jest**
+
+To run tests:
+
+```bash
+npm test
+```
+
+---
+
+## 🚀 Deployment
+
+The frontend is deployed on **Netlify**.
+
+Steps:
+
+1. Push code to GitHub
+2. Connect Netlify to the GitHub repo
+3. Set build command: `npm run build`
+4. Set publish directory: `build/`
+5. Click **Deploy**
+
+Backend : Deploy separately using **Render**.
+
+---
+
+## 📁 Project Structure
+
+```
+geoneo/
+│
+├── public/
+├── src/
+│   ├── App.js
+│   ├── Header.js
+│   ├── Home.js
+│   ├── Login.js
+│   ├── Signup.js
+│   ├── SearchCountry.js
+│   ├── SearchResult.js
+│   ├── Regions.js
+│   ├── Languages.js
+│   ├── Continents.js
+│   └── IntroAnimation.js
+│
+├── backend/ (Optional)
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+├── package.json
+└── README.md
+```
+
+---
+
+
