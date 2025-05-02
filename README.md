@@ -61,6 +61,7 @@ Using the [REST Countries API](https://restcountries.com/),
 
 ```bash
 git clone https://github.com/HirushiniChandrasoma/explore-countries-restapi.git
+cd explore-countries-restapi
 cd frontend
 ```
 
@@ -129,7 +130,7 @@ Backend : Deploy separately using **Render**.
 ## 📁 Project Structure
 
 ```
-geoneo/
+explore-countries-restapi/
 │
 ├── public/
 ├── src/
