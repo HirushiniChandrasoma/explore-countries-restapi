@@ -160,24 +160,24 @@ explore-countries-restapi/
 
 ## 📸 Screenshots
 ### 🏠 Homepage
-![Homepage](../explore-countries-restapi/Screenshots/landing.png)
+![Homepage](./Screenshots/landing.png)
 
 ### 🔍 Search Function
-![Search](../explore-countries-restapi/Screenshots/search.png)
+![Search](./Screenshots/search.png)
 
 ### 🔐 Login Page
-![Login](../explore-countries-restapi/Screenshots/login.png)
+![Login](./Screenshots/login.png)
 
 ### 📝 Sign Up Page
-![SignUp](../explore-countries-restapi/Screenshots/signup.png)
+![SignUp](./Screenshots/signup.png)
 
 ### 🌍 Filter by Region
-![Continent](../explore-countries-restapi/Screenshots/continents.png)
-![Continents](../explore-countries-restapi/Screenshots/continents1.png)
+![Continent](./Screenshots/continents.png)
+![Continents](./Screenshots/continents1.png)
 
 ### 🗣️ Filter by Language
-![Language](../explore-countries-restapi/Screenshots/languages.png)
-![Languages](../explore-countries-restapi/Screenshots/languages1.png)
+![Language](./Screenshots/languages.png)
+![Languages](./Screenshots/languages1.png)
 
 ### 📖 Country Details
-![Details](../explore-countries-restapi/Screenshots/details.png)
+![Details](./Screenshots/details.png)
