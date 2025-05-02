@@ -1,116 +1,68 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
+import login from "../src/images/login.jpg";
 
 function Login() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState("");
+  const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send login data to backend
-      const response = await axios.post("http://localhost:5001/api/auth/login", formData);
-      const { token } = response.data;
-
-      // Store the token (optional - if using for session handling)
-      localStorage.setItem("auth_token", token);
-
-      // Redirect to homepage after successful login
+      const res = await axios.post("http://localhost:5002/auth/login", form);
+      alert("Login successful! Welcome " + res.data.auth.name);
       navigate("/");
     } catch (err) {
-      console.error("Error during login:", err.response?.data?.error);
-      setError(err.response?.data?.error || "An unexpected error occurred.");
+      alert(err.response?.data?.message || "Error during login");
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="welcome-container">
-        <h1 className="welcome-heading">Welcome Back!</h1>
-        <p className="welcome-message">
-          Please enter your details to access your account
-        </p>
-      </div>
+    <div
+      className="h-screen w-full bg-center bg-no-repeat flex items-center justify-start "
+      style={{
+        backgroundImage: `url(${login})`,
+        backgroundSize: "cover", 
+      }}
+    >
+      <div className="h-full w-2/5 min-h-screen backdrop-blur-md bg-black bg-opacity-80 p-10 text-white shadow-2xl flex flex-col justify-center">
+        <div className="bg-white bg-opacity-20 p-10 rounded-xl shadow-inner">
+          <h2 className="text-4xl font-bold mb-6 text-white">Welcome back!</h2>
+          <p className="mb-10 text-lg text-gray-300">Please login to your account</p>
 
-      <div className="login-modal">
-        <div className="login-header">
-          <h2>Login</h2>
-        </div>
-
-        <form className="login-form" onSubmit={handleSubmit}>
-          {error && <p className="error-message">{error}</p>}
-
-          <div className="form-groupL">
-            <label className="labelL" htmlFor="email">
-              Email or phone number
-            </label>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             <input
-              className="inputL"
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Enter your email or phone"
-              value={formData.email}
-              onChange={handleChange}
+              type="email"
+              placeholder="Email"
+              className="px-5 py-4 text-lg rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
             />
-          </div>
+            <input
+              type="password"
+              placeholder="Password"
+              className="px-5 py-4 text-lg rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
+              required
+            />
+            <button
+              type="submit"
+              className="bg-blue-800 hover:bg-blue-900 text-white font-bold text-lg py-4 rounded mt-4"
+            >
+              Login
+            </button>
+          </form>
 
-          <div className="form-group password-group">
-            <label className="labelL" htmlFor="password">
-              Password
-            </label>
-            <div className="password-input-container">
-              <input
-                className="inputL"
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-              <button
-                type="button"
-                className="toggle-password"
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-              </button>
-            </div>
-          </div>
-
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
-
-        <div className="signup-prompt">
-          <p>
-            Don't have an account?{" "}
-            <Link to="/register" className="signup-link">
+          <div className="mt-10 text-md text-gray-300">
+            Don’t have an account?{" "}
+            <span
+              className="text-blue-500 font-bold hover:underline cursor-pointer"
+              onClick={() => navigate("/register")}
+            >
               Sign up
-            </Link>
-          </p>
+            </span>
+          </div>
         </div>
       </div>
     </div>

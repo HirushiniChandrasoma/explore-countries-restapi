@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import bg from '../src/images/img_back.jpg'; // Imported image
+import bg from '../src/images/img_back.jpg';
 
 export default function Languages() {
   const [countriesData, setCountriesData] = useState([]);
@@ -214,7 +214,7 @@ export default function Languages() {
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-4 py-2 border rounded-md bg-blue-500 text-white disabled:opacity-50"
+            className="px-4 py-2 border rounded-md bg-blue-800 text-white disabled:opacity-50"
           >
             Prev
           </button>
@@ -224,7 +224,7 @@ export default function Languages() {
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 border rounded-md bg-blue-500 text-white disabled:opacity-50"
+            className="px-4 py-2 border rounded-md bg-blue-800 text-white disabled:opacity-50"
           >
             Next
           </button>

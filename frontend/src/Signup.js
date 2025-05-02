@@ -1,145 +1,76 @@
-import { useState } from "react";
-import "./Signup.css";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import login from "../src/images/register.jpg"; // Reusing the same background image
 
 function SignUp() {
-  const [formData, setFormData] = useState({
-    FirstName: "",
-    LastName: "",
-    MobileNumber: "",
-    Email: "",
-    Password: "",
-  });
-
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const transformedData = {
-        first_name: formData.FirstName,
-        last_name: formData.LastName,
-        mobile_number: formData.MobileNumber,
-        email: formData.Email,
-        password: formData.Password,
-      };
-
-      await axios.post("http://localhost:5001/api/auth/register", transformedData);
-      alert("User registered successfully!");
+      await axios.post("http://localhost:5002/auth/register", form);
+      alert("Signup successful!");
       navigate("/login");
-    } catch (error) {
-      const errorMessage = error.response?.data?.error || "An unexpected error occurred.";
-      alert(`Error during registration: ${errorMessage}`);
+    } catch (err) {
+      alert(err.response?.data?.message || "Error during signup");
     }
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-form-container">
-        <div className="signup-header">
-          <h1>Sign Up</h1>
-          <p>Create your account to explore the world</p>
-        </div>
-        <form className="signup-form" onSubmit={handleSubmit}>
-          <div className="form-rowS">
-            <div className="form-groupS">
-              <label className="labelS" htmlFor="FirstName">First Name</label>
-              <input
-                className="inputS"
-                type="text"
-                id="FirstName"
-                name="FirstName"
-                placeholder="Enter your first name"
-                value={formData.FirstName}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-groupS">
-              <label className="labelS" htmlFor="LastName">Last Name</label>
-              <input
-                className="inputS"
-                type="text"
-                id="LastName"
-                name="LastName"
-                placeholder="Enter your last name"
-                value={formData.LastName}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
+    <div
+      className="h-screen w-full bg-center bg-no-repeat flex items-center justify-end"
+      style={{
+        backgroundImage: `url(${login})`,
+        backgroundSize: "cover", // Consistent with Login page
+      }}
+    >
+      <div className="h-full w-2/5 min-h-screen backdrop-blur-md bg-black bg-opacity-80 p-10 text-white shadow-2xl flex flex-col justify-center">
+        <div className="bg-white bg-opacity-20 p-10 rounded-xl shadow-inner">
+          <h2 className="text-4xl font-bold mb-6 text-white">Create an account</h2>
+          <p className="mb-10 text-lg text-gray-300">Please fill in your details</p>
 
-          <div className="form-groupS">
-            <label className="labelS" htmlFor="MobileNumber">Mobile Number</label>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             <input
-              className="inputS"
-              type="tel"
-              id="MobileNumber"
-              name="MobileNumber"
-              placeholder="Enter your mobile number"
-              value={formData.MobileNumber}
-              onChange={handleChange}
+              type="text"
+              placeholder="Name"
+              className="px-5 py-4 text-lg rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
             />
-          </div>
-
-          <div className="form-groupS">
-            <label className="labelS" htmlFor="Email">Email</label>
             <input
-              className="inputS"
               type="email"
-              id="Email"
-              name="Email"
-              placeholder="Enter your email address"
-              value={formData.Email}
-              onChange={handleChange}
+              placeholder="Email"
+              className="px-5 py-4 text-lg rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
             />
-          </div>
-
-          <div className="form-groupS">
-            <label className="labelS" htmlFor="Password">Password</label>
             <input
-              className="inputS"
               type="password"
-              id="Password"
-              name="Password"
-              placeholder="Create a password"
-              value={formData.Password}
-              onChange={handleChange}
+              placeholder="Password"
+              className="px-5 py-4 text-lg rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
               required
             />
-          </div>
+            <button
+              type="submit"
+              className="bg-blue-800 hover:bg-blue-900 text-white font-semibold text-lg py-4 rounded mt-4"
+            >
+              Sign Up
+            </button>
+          </form>
 
-          <button type="submit" className="signup-button">Sign Up</button>
-        </form>
-
-        <div className="login-link">
-          <p>
+          <div className="mt-10 text-md text-gray-300">
             Already have an account?{" "}
-            <Link to="/login" className="login-link">Log In</Link>
-          </p>
+            <span
+              className="text-blue-500 font-bold hover:underline cursor-pointer"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </span>
+          </div>
         </div>
-      </div>
-
-      <div className="signup-image">
-        <div className="benefits">
-          <h2>Why Join Us?</h2>
-          <ul>
-            <li>Explore countries, cultures, and traditions around the world</li>
-            <li>Discover languages spoken in different regions</li>
-            <li>Learn about continents and their uniqueness</li>
-            <li>Stay curious, travel digitally, and grow your global knowledge</li>
-          </ul>
-        </div>
-        {/* Optional: Add an image related to global exploration here */}
       </div>
     </div>
   );
