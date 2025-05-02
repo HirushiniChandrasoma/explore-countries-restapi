@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 
+jest.mock('../Home', () => () => <div>Mocked Home</div>);
+jest.mock('../Login', () => () => <div>Mocked Login</div>);
+jest.mock('../Signup', () => () => <div>Mocked Signup</div>);
+jest.mock('../SearchCountry', () => () => <div>Mocked SearchCountry</div>);
+jest.mock('../SearchResult', () => () => <div>Mocked SearchResult</div>);
+jest.mock('../Regions', () => () => <div>Mocked Regions</div>);
+jest.mock('../Languages', () => () => <div>Mocked Languages</div>);
+jest.mock('../Continents', () => () => <div>Mocked Continents</div>);
+jest.mock('../IntroAnimation', () => () => <div>Mocked Intro</div>);
+jest.mock('../Header', () => () => <div>Mocked Header</div>);
 test('renders the Home component', () => {
-  // Only test the core components (without using BrowserRouter)
   render(<App />);
-  const homeElement = screen.getByText(/Home/i); // Assume Home component has 'Home' text
+  jest.mock('../Home', () => () => <div>Explore the world!</div>);
   expect(homeElement).toBeInTheDocument();
-});
-import { render, screen } from '@testing-library/react';
-import App from '../App';
-
-// Modify the test so it doesn't rely on routing
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);  // Example test, update as needed
-  expect(linkElement).toBeInTheDocument();
 });
