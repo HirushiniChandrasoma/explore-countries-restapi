@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import australia from '../src/images/australia.png';
-import europe from '../src/images/europe.png';
-import asia from '../src/images/asia.png';
-import antarctica from '../src/images/antactica.png';
-import africa from '../src/images/africa.png';
-import northamerica from '../src/images/northamerica.png';
-import southamerica from '../src/images/southamerica.png';
-import bg from '../src/images/bg.jpg';
+import australia from '../images/australia.png';
+import europe from '../images/europe.png';
+import asia from '../images/asia.png';
+import antarctica from '../images/antactica.png';
+import africa from '../images/africa.png';
+import northamerica from '../images/northamerica.png';
+import southamerica from '../images/southamerica.png';
+import bg from '../images/bg.jpg';
 
 export default function Continents() {
   const [continents, setContinents] = useState([]);

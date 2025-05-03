@@ -4,7 +4,7 @@ GeoNeo is a modern React application that allows users to explore countries arou
 
 ## 🔗 Live Demo
 
-🌐 [Live on Vercel](explore-countries-restapi.vercel.app)
+🌐 [Live on Vercel](https://explore-countries-restapi.vercel.app)
 
 
 ---

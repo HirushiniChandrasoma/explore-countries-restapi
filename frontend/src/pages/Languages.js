@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import bg from '../src/images/img_back.jpg';
+import bg from '../images/img_back.jpg';
 
 export default function Languages() {
   const [countriesData, setCountriesData] = useState([]);

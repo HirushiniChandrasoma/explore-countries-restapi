@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import login from "../src/images/register.jpg"; // Reusing the same background image
+import login from "../images/register.jpg"; 
 
 function SignUp() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
