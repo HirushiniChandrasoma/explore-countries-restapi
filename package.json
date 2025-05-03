@@ -1,13 +1,4 @@
 {
-  "homepage": "https://HirushiniChandrasoma.github.io/explore-countries-restapi",
-
-  "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-},
-
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",

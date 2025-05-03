@@ -4,7 +4,8 @@ GeoNeo is a modern React application that allows users to explore countries arou
 
 ## 🔗 Live Demo
 
-🌐 [Live on Netlify](https://your-netlify-site.netlify.app) 
+🌐 [Live on GitHub Pages](https://HirushiniChandrasoma.github.io/explore-countries-restapi)
+
 
 ---
 
